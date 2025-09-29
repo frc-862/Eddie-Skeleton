@@ -9,41 +9,41 @@ import edu.wpi.first.wpilibj2.command.Command;
 
 public class SystemTestCommand extends Command {
 
-  public SystemTestCommand() {}
+    public SystemTestCommand() {}
 
-  protected boolean canRun() {
-    return DriverStation.isTest();
-  }
-
-  protected void initializeTest() {}
-
-  protected void executeTest() {}
-
-  protected void endTest(boolean interrupted) {}
-
-  @Override
-  public void initialize() {
-    if (canRun()) {
-      initializeTest();
+    protected boolean canRun() {
+        return DriverStation.isTest();
     }
-  }
 
-  @Override
-  public void execute() {
-    if (canRun()) {
-      executeTest();
+    protected void initializeTest() {}
+
+    protected void executeTest() {}
+
+    protected void endTest(boolean interrupted) {}
+
+    @Override
+    public void initialize() {
+        if (canRun()) {
+            initializeTest();
+        }
     }
-  }
 
-  @Override
-  public void end(boolean interrupted) {
-    if (canRun()) {
-      endTest(interrupted);
+    @Override
+    public void execute() {
+        if (canRun()) {
+            executeTest();
+        }
     }
-  }
 
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
+    @Override
+    public void end(boolean interrupted) {
+        if (canRun()) {
+            endTest(interrupted);
+        }
+    }
+
+    @Override
+    public boolean isFinished() {
+        return false;
+    }
 }

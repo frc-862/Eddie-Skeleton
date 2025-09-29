@@ -23,44 +23,43 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer extends LightningContainer{
-  Drive drivetrain;
-  Shooter shooter;
-  Collector collector;
+    Drive drivetrain;
+    Shooter shooter;
+    Collector collector;
 
-  XboxController driver;
-  XboxController copilot;
+    XboxController driver;
+    XboxController copilot;
   
-  @Override
-  protected void initializeSubsystems() {
-   drivetrain = new Drive();
-   shooter = new Shooter();
-   collector = new Collector();
+    @Override
+    protected void initializeSubsystems() {
+        drivetrain = new Drive();
+        shooter = new Shooter();
+        collector = new Collector();
 
-   driver = new XboxController(0);
-   copilot = new XboxController(1);
-  }
+        driver = new XboxController(0);
+        copilot = new XboxController(1);
+    }
 
-  @Override
-  protected void initializeNamedCommands() {
-    // NOTHINGNNGIN
-  }
+    @Override
+    protected void initializeNamedCommands() {
+        // NOTHINGNNGIN
+    }
 
-  @Override
-  protected void configureButtonBindings() {
-    new Trigger(copilot::getAButton).whileTrue(new Collect(collector, 1));
-    new Trigger(copilot::getBButton).whileTrue(new Collect(collector, -1));
+    @Override
+    protected void configureButtonBindings() {
+        new Trigger(copilot::getAButton).whileTrue(new Collect(collector, 1));
+        new Trigger(copilot::getBButton).whileTrue(new Collect(collector, -1));
 
-    new Trigger(copilot::getYButton).whileTrue(new Shoot(shooter, 1));
-  }
+        new Trigger(copilot::getYButton).whileTrue(new Shoot(shooter, 1));
+    }
 
-  @Override
-  protected void configureDefaultCommands() {
-    drivetrain.setDefaultCommand(new TankDrive(drivetrain, driver::getLeftY, driver::getRightY));
-  }
+    @Override
+    protected void configureDefaultCommands() {
+        drivetrain.setDefaultCommand(new TankDrive(drivetrain, driver::getLeftY, driver::getRightY));
+    }
 
-  @Override
-  protected Command getAutonomousCommand() {
-   return new InstantCommand();
-  }
-  
+    @Override
+    protected Command getAutonomousCommand() {
+        return new InstantCommand();
+    }
 }

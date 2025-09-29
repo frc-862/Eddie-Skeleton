@@ -9,19 +9,19 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.RobotMap;
 
 public class Collector extends SubsystemBase {
-  private Victor motor = new Victor(RobotMap.COLLECTOR_MOTOR);
+    private Victor motor = new Victor(RobotMap.COLLECTOR_MOTOR);
 
-  /** Creates a new Indexer. */
-  public Collector() {}
+    /** Creates a new Indexer. */
+    public Collector() {}
 
-  @Override
-  public void periodic() {}
+    @Override
+    public void periodic() {}
 
-  public void setPower(double power) {
-    motor.set(power);
-  }
+    public void setPower(double power) {
+        motor.set(power);
+    }
 
-  public void stop() {
-    motor.stopMotor();
-  }
+    public void stop() {
+        motor.stopMotor();
+    }
 }

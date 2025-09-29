@@ -9,20 +9,21 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.RobotMap;
 
 public class Shooter extends SubsystemBase {
-  private Victor motor = new Victor(RobotMap.SHOOTER_MOTOR);
-  /** Creates a new Shooter. */
-  public Shooter() {}
+    private Victor motor = new Victor(RobotMap.SHOOTER_MOTOR);
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
+    /** Creates a new Shooter. */
+    public Shooter() {}
 
-  public void setPower(double power) {
-    motor.set(power);
-  }
+    @Override
+    public void periodic() {
+        // This method will be called once per scheduler run
+    }
 
-  public void stop() {
-    motor.stopMotor();
-  }
+    public void setPower(double power) {
+        motor.set(power);
+    }
+
+    public void stop() {
+        motor.stopMotor();
+    }
 }

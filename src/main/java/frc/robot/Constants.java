@@ -13,17 +13,17 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  public static class RobotMap {
-    // Drive
-    public static int FRONT_LEFT_DRIVE = 0;
-    public static int FRONT_RIGHT_DRIVE = 2;
-    public static int BACK_LEFT_DRIVE = 1;
-    public static int BACK_RIGHT_DRIVE = 3;
+    public static class RobotMap {
+        // Drive
+        public static int FRONT_LEFT_DRIVE = 0;
+        public static int FRONT_RIGHT_DRIVE = 2;
+        public static int BACK_LEFT_DRIVE = 1;
+        public static int BACK_RIGHT_DRIVE = 3;
 
-    // Shooter
-    public static int SHOOTER_MOTOR = 5;
+        // Shooter
+        public static int SHOOTER_MOTOR = 5;
 
-    // Collector
-    public static int COLLECTOR_MOTOR = 4;
-  }
+        // Collector
+        public static int COLLECTOR_MOTOR = 4;
+    }
 }
