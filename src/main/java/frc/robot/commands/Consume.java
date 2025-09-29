@@ -5,26 +5,27 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Collector;
+import frc.robot.subsystems.Consumer;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class Collect extends Command {
-    public Collector indexer;
+public class Consume extends Command {
+    public Consumer consumer;
+    
     public double power;
 
-    /** Creates a new Index. */
-    public Collect(Collector indexer, double power) {
-        this.indexer = indexer;
+    /** Creates a new Consume Command. */
+    public Consume(Consumer consumer, double power) {
+        this.consumer = consumer;
         this.power = power;
 
         // Use addRequirements() here to declare subsystem dependencies.
-        addRequirements(indexer);
+        addRequirements(consumer);
     }
 
     // Called when the command is initially scheduled.
     @Override
         public void initialize() {
-        indexer.setPower(power);
+        consumer.setPower(power);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
@@ -34,7 +35,7 @@ public class Collect extends Command {
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        indexer.stop();
+        consumer.stop();
     }
 
     // Returns true when the command should end.

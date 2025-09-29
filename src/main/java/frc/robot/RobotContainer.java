@@ -4,11 +4,11 @@
 
 package frc.robot;
 
-import frc.robot.commands.Collect;
+import frc.robot.commands.Consume;
 import frc.robot.commands.Shoot;
 import frc.robot.commands.TankDrive;
-import frc.robot.subsystems.Collector;
-import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.Consumer;
+import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Shooter;
 import frc.utils.LightningContainer;
 import edu.wpi.first.wpilibj.XboxController;
@@ -23,18 +23,18 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer extends LightningContainer{
-    Drive drivetrain;
+    Drivetrain drivetrain;
     Shooter shooter;
-    Collector collector;
+    Consumer consumer;
 
     XboxController driver;
     XboxController copilot;
   
     @Override
     protected void initializeSubsystems() {
-        drivetrain = new Drive();
+        drivetrain = new Drivetrain();
         shooter = new Shooter();
-        collector = new Collector();
+        consumer = new Consumer();
 
         driver = new XboxController(0);
         copilot = new XboxController(1);
@@ -47,8 +47,8 @@ public class RobotContainer extends LightningContainer{
 
     @Override
     protected void configureButtonBindings() {
-        new Trigger(copilot::getAButton).whileTrue(new Collect(collector, 1));
-        new Trigger(copilot::getBButton).whileTrue(new Collect(collector, -1));
+        new Trigger(copilot::getAButton).whileTrue(new Consume(consumer, 1));
+        new Trigger(copilot::getBButton).whileTrue(new Consume(consumer, -1));
 
         new Trigger(copilot::getYButton).whileTrue(new Shoot(shooter, 1));
     }

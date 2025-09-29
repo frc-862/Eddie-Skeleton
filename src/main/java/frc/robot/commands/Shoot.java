@@ -10,9 +10,10 @@ import frc.robot.subsystems.Shooter;
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
 public class Shoot extends Command {
     private Shooter shooter;
+    
     private double power;
 
-    /** Creates a new Shoot. */
+    /** Creates a new Shoot Command. */
     public Shoot(Shooter shooter, double power) {
         this.shooter = shooter;
         this.power = power;

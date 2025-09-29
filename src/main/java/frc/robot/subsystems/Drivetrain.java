@@ -8,33 +8,44 @@ import edu.wpi.first.wpilibj.motorcontrol.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.RobotMap;
 
-public class Drive extends SubsystemBase {
-    // All the motors
-    private Victor frontRightMotor = new Victor(RobotMap.FRONT_RIGHT_DRIVE);
-    private Victor frontLeftMotor = new Victor(RobotMap.FRONT_LEFT_DRIVE);
-    private Victor backRightMotor = new Victor(RobotMap.BACK_RIGHT_DRIVE);
-    private Victor backLeftMotor = new Victor(RobotMap.BACK_LEFT_DRIVE);
+public class Drivetrain extends SubsystemBase {
+    private Victor frontRightMotor;
+    private Victor frontLeftMotor;
+    private Victor backRightMotor;
+    private Victor backLeftMotor;
 
-    /** Creates a new Drive. */
-    public Drive() {}
+    /** Creates a new Drivetrain Subsystem. */
+    public Drivetrain() {
+        frontRightMotor = new Victor(RobotMap.FRONT_RIGHT_DRIVE);
+        frontLeftMotor = new Victor(RobotMap.FRONT_LEFT_DRIVE);
+        backRightMotor = new Victor(RobotMap.BACK_RIGHT_DRIVE);
+        backLeftMotor = new Victor(RobotMap.BACK_LEFT_DRIVE);
+    }
 
-    // Nothing here
     @Override
     public void periodic() {}
 
-    // Set the left side
+    /**
+     * Sets power to the left side of the drivetrain.
+     * @param power
+     */
     public void setLeftPower(double power) {
         frontLeftMotor.set(power);
         backLeftMotor.set(power);
     }
 
-    // Set the right side
+    /**
+     * Sets power to the right side of the drivetrain.
+     * @param power
+     */
     public void setRightPower(double power) {
         frontRightMotor.set(power);
         backRightMotor.set(power);
     }
 
-    // Stop the drive motors
+    /**
+     * Stops all the motors in the drivetrain.
+     */
     public void stop() {
         frontRightMotor.stopMotor();
         backRightMotor.stopMotor();

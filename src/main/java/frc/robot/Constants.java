@@ -14,7 +14,7 @@ package frc.robot;
  */
 public final class Constants {
     public static class RobotMap {
-        // Drive
+        // Drivetrain
         public static int FRONT_LEFT_DRIVE = 0;
         public static int FRONT_RIGHT_DRIVE = 2;
         public static int BACK_LEFT_DRIVE = 1;
@@ -23,7 +23,7 @@ public final class Constants {
         // Shooter
         public static int SHOOTER_MOTOR = 5;
 
-        // Collector
-        public static int COLLECTOR_MOTOR = 4;
+        // Consumer
+        public static int CONSUMER_MOTOR = 4;
     }
 }

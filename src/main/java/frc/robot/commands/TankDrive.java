@@ -7,23 +7,19 @@ package frc.robot.commands;
 import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.Drivetrain;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
 public class TankDrive extends Command {
-    // The drivetrain we are controlling
-    private Drive drivetrain;
+    private Drivetrain drivetrain;
   
-    // Powers
     private DoubleSupplier leftPower;
     private DoubleSupplier rightPower;
 
-    /** Creates a new TankDrive. */
-    public TankDrive(Drive drivetrain, DoubleSupplier leftPower, DoubleSupplier rightPower) {
-        // Set the drivetrain
+    /** Creates a new TankDrive Command. */
+    public TankDrive(Drivetrain drivetrain, DoubleSupplier leftPower, DoubleSupplier rightPower) {
         this.drivetrain = drivetrain;
 
-        // Set the powers
         this.leftPower = leftPower;
         this.rightPower = rightPower;
 
@@ -38,7 +34,6 @@ public class TankDrive extends Command {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        // Actuallyset the powers
         drivetrain.setLeftPower(leftPower.getAsDouble());
         drivetrain.setRightPower(rightPower.getAsDouble());
     }

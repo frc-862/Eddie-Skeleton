@@ -8,19 +8,31 @@ import edu.wpi.first.wpilibj.motorcontrol.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.RobotMap;
 
-public class Collector extends SubsystemBase {
-    private Victor motor = new Victor(RobotMap.COLLECTOR_MOTOR);
+public class Consumer extends SubsystemBase {
+    private Victor motor;
 
-    /** Creates a new Indexer. */
-    public Collector() {}
+    /** 
+     * Creates a new Consumer Subsystem.
+     * Used to collect and index game pieces at the same time (stupid I know).
+     */
+    public Consumer() {
+        motor = new Victor(RobotMap.CONSUMER_MOTOR);
+    }
 
     @Override
     public void periodic() {}
 
+    /**
+     * Sets the power to the consumer motor.
+     * @param power
+     */
     public void setPower(double power) {
         motor.set(power);
     }
 
+    /**
+     * Stops the consumer motor.
+     */
     public void stop() {
         motor.stopMotor();
     }
