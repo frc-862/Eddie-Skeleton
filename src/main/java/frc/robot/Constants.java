@@ -15,6 +15,7 @@ package frc.robot;
 public final class Constants {
     public static class RobotMap {
         // Drivetrain
+        // Consumer is considered front of robot for reference
         public static int FRONT_LEFT_DRIVE = 0;
         public static int FRONT_RIGHT_DRIVE = 2;
         public static int BACK_LEFT_DRIVE = 1;
@@ -25,5 +26,11 @@ public final class Constants {
 
         // Consumer
         public static int CONSUMER_MOTOR = 4;
+
+        // Driver
+        public static int DRIVER_PORT = 0;
+
+        // Copilot
+        public static int COPILOT_PORT = 1;
     }
 }

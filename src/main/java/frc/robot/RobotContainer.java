@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import frc.robot.Constants.RobotMap;
 import frc.robot.commands.Consume;
 import frc.robot.commands.Shoot;
 import frc.robot.commands.TankDrive;
@@ -36,8 +37,8 @@ public class RobotContainer extends LightningContainer{
         shooter = new Shooter();
         consumer = new Consumer();
 
-        driver = new XboxController(0);
-        copilot = new XboxController(1);
+        driver = new XboxController(RobotMap.DRIVER_PORT);
+        copilot = new XboxController(RobotMap.COPILOT_PORT);
     }
 
     @Override
@@ -47,15 +48,14 @@ public class RobotContainer extends LightningContainer{
 
     @Override
     protected void configureButtonBindings() {
-        new Trigger(copilot::getAButton).whileTrue(new Consume(consumer, 1));
-        new Trigger(copilot::getBButton).whileTrue(new Consume(consumer, -1));
-
-        new Trigger(copilot::getYButton).whileTrue(new Shoot(shooter, 1));
+        new Trigger(copilot::getAButton).whileTrue(new Shoot(shooter, () -> 1));
     }
 
     @Override
     protected void configureDefaultCommands() {
-        drivetrain.setDefaultCommand(new TankDrive(drivetrain, driver::getLeftY, driver::getRightY));
+        drivetrain.setDefaultCommand(new TankDrive(drivetrain, () -> driver.getLeftY(), () -> driver.getRightY()));
+
+        consumer.setDefaultCommand(new Consume(consumer, () -> (copilot.getRightTriggerAxis() - copilot.getLeftTriggerAxis())));
     }
 
     @Override

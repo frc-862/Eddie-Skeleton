@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import com.pathplanner.lib.auto.AutoBuilder;
+
 import edu.wpi.first.wpilibj.motorcontrol.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.RobotMap;
@@ -17,9 +19,15 @@ public class Drivetrain extends SubsystemBase {
     /** Creates a new Drivetrain Subsystem. */
     public Drivetrain() {
         frontRightMotor = new Victor(RobotMap.FRONT_RIGHT_DRIVE);
-        frontLeftMotor = new Victor(RobotMap.FRONT_LEFT_DRIVE);
         backRightMotor = new Victor(RobotMap.BACK_RIGHT_DRIVE);
+
+        frontLeftMotor = new Victor(RobotMap.FRONT_LEFT_DRIVE);
         backLeftMotor = new Victor(RobotMap.BACK_LEFT_DRIVE);
+
+        frontLeftMotor.setInverted(true);
+        backLeftMotor.setInverted(true);
+
+        // this is to set up pathplanner and autons (no configuration needed from you here)
     }
 
     @Override
@@ -41,6 +49,22 @@ public class Drivetrain extends SubsystemBase {
     public void setRightPower(double power) {
         frontRightMotor.set(power);
         backRightMotor.set(power);
+    }
+
+    /**
+     * Stops the left side motors of the drivetrain.
+     */
+    public void stopLeft() {
+        frontLeftMotor.stopMotor();
+        backLeftMotor.stopMotor();
+    }
+
+    /**
+     * Stops the right side motors of the drivetrain.
+     */
+    public void stopRight() {
+        frontRightMotor.stopMotor();
+        backRightMotor.stopMotor();
     }
 
     /**

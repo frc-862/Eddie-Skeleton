@@ -4,6 +4,8 @@
 
 package frc.robot.commands;
 
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Consumer;
 
@@ -11,10 +13,10 @@ import frc.robot.subsystems.Consumer;
 public class Consume extends Command {
     public Consumer consumer;
     
-    public double power;
+    public DoubleSupplier power;
 
     /** Creates a new Consume Command. */
-    public Consume(Consumer consumer, double power) {
+    public Consume(Consumer consumer, DoubleSupplier power) {
         this.consumer = consumer;
         this.power = power;
 
@@ -24,13 +26,13 @@ public class Consume extends Command {
 
     // Called when the command is initially scheduled.
     @Override
-        public void initialize() {
-        consumer.setPower(power);
-    }
+    public void initialize() {}
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
-    public void execute() {}
+    public void execute() {
+        consumer.setPower(power.getAsDouble());
+    }
 
     // Called once the command ends or is interrupted.
     @Override

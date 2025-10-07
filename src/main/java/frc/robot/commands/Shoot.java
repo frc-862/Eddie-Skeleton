@@ -4,6 +4,8 @@
 
 package frc.robot.commands;
 
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Shooter;
 
@@ -11,10 +13,10 @@ import frc.robot.subsystems.Shooter;
 public class Shoot extends Command {
     private Shooter shooter;
     
-    private double power;
+    private DoubleSupplier power;
 
     /** Creates a new Shoot Command. */
-    public Shoot(Shooter shooter, double power) {
+    public Shoot(Shooter shooter, DoubleSupplier power) {
         this.shooter = shooter;
         this.power = power;
 
@@ -24,13 +26,13 @@ public class Shoot extends Command {
 
     // Called when the command is initially scheduled.
     @Override
-    public void initialize() {
-        shooter.setPower(power);
-    }
+    public void initialize() {}
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
-    public void execute() {}
+    public void execute() {
+        shooter.setPower(power.getAsDouble());
+    }
 
     // Called once the command ends or is interrupted.
     @Override
