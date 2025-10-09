@@ -4,8 +4,7 @@
 
 package frc.robot.subsystems;
 
-import com.pathplanner.lib.auto.AutoBuilder;
-
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj.motorcontrol.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.RobotMap;
@@ -26,8 +25,6 @@ public class Drivetrain extends SubsystemBase {
 
         frontLeftMotor.setInverted(true);
         backLeftMotor.setInverted(true);
-
-        // this is to set up pathplanner and autons (no configuration needed from you here)
     }
 
     @Override

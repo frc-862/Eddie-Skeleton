@@ -11,9 +11,9 @@ import frc.robot.subsystems.Consumer;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
 public class Consume extends Command {
-    public Consumer consumer;
+    private Consumer consumer;
     
-    public DoubleSupplier power;
+    private DoubleSupplier power;
 
     /** Creates a new Consume Command. */
     public Consume(Consumer consumer, DoubleSupplier power) {

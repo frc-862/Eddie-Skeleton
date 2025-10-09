@@ -22,4 +22,14 @@ public class Robot extends LightningRobot {
         super(new RobotContainer());
     }
 
+    @Override
+    public void autonomousInit() {
+        super.autonomousInit();
+    }
+
+    @Override
+    public void teleopInit() {
+        super.teleopInit();
+    }
+
 }
